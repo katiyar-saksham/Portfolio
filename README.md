@@ -2,7 +2,7 @@
 
 ## 🚀 Live Preview
 
-👉 [Live Site](https://your-live-site-link.com)
+👉 [Live Site](https://portfolio-coral-kappa-30.vercel.app)
 
 ---
 
