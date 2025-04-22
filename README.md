@@ -56,7 +56,7 @@ portfolio/
 
 1. Clone this repository
    ```
-   git clone https://github.com/yourusername/portfolio.git
+   git clone https://github.com/katiyar-saksham/Portfolio.git
    ```
 2. Open `index.html` in your browser
 3. Explore the different sections of the portfolio
@@ -76,7 +76,3 @@ Feel free to reach out if you have any questions or would like to collaborate!
 - **Email**: [katiyar.saksham2004@gmail.com](mailto:katiyar.saksham2004@gmail.com)
 - **LinkedIn**: [Saksham Katiyar](https://www.linkedin.com/in/katiyar-saksham/)
 - **GitHub**: [Your GitHub](https://github.com/katiyar-saksham)
-
----
-
-⭐ Don't forget to star this repo if you find it useful!
