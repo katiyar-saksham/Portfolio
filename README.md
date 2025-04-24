@@ -2,7 +2,7 @@
 
 ## 🚀 Live Preview
 
-👉 [Live Site](https://portfolio-coral-kappa-30.vercel.app)
+👉 [Live Site](https://sakshamkatiyar.vercel.app)
 
 ---
 
