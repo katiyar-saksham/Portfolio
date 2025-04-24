@@ -734,7 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleMouseMoveAndSVG();
         animateLinesBackground();
         animateNavbarAndHome();
-        initAboutSectionAnimation();
+        // initAboutSectionAnimation();
         marqueAnimation();
         animateSectionsOnScroll();
         initSmoothNavScroll();
