@@ -1,4 +1,4 @@
-# Saksham Katiyar - Frontend Developer Portfolio
+# Saksham Katiyar – Frontend Developer Portfolio
 
 ## 🚀 Live Preview
 
@@ -12,7 +12,7 @@ This repository contains the source code for my personal portfolio website showc
 
 ## 🚀 About Me
 
-I'm Saksham Katiyar, a passionate Frontend Developer and UI/UX Designer with enthusiasm for hackathons. I create responsive, intuitive, and visually appealing web experiences with a focus on user experience and modern design principles.
+“I'm Saksham Katiyar, a passionate Frontend Developer and UI/UX Designer with a strong enthusiasm for hackathons". I create responsive, intuitive, and visually appealing web experiences with a focus on user experience and modern design principles.
 
 ## 🛠️ Technologies Used
 
@@ -35,7 +35,6 @@ I'm Saksham Katiyar, a passionate Frontend Developer and UI/UX Designer with ent
 portfolio/
 ├── assets/
 │   ├── images/
-│   └── videos/
 ├── css/
 │   └── style.css
 ├── js/
@@ -73,7 +72,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Feel free to reach out if you have any questions or would like to collaborate!
 
-- **Email**: [katiyar.saksham2004@gmail.com](mailto:katiyar.saksham2004@gmail.com)
+- **Email:** [katiyar.saksham2004@gmail.com](mailto:katiyar.saksham2004@gmail.com)
+- **Portfolio**: [sakshamkatiyar.vercel.app](https://sakshamkatiyar.vercel.app)
 - **LinkedIn**: [Saksham Katiyar](https://www.linkedin.com/in/katiyar-saksham/)
 - **GitHub**: [katiyar-saksham](https://github.com/katiyar-saksham)
-- **Portfolio**: [sakshamkatiyar.vercel.app](https://sakshamkatiyar.vercel.app)
