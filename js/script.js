@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+
 
 // Hamburger Menu
 function setupHamburgerMenu() {
@@ -40,11 +39,10 @@ function setupHamburgerMenu() {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// NavBar and HOME Animation
-function animateNavbarAndHome() {
+// Navbar Animation
+function animateNavbar() {
     const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
-    // NAVBAR Animations
     tl.from('nav .logo', {
         y: -50,
         opacity: 0,
@@ -60,13 +58,22 @@ function animateNavbarAndHome() {
             y: -50,
             opacity: 0,
             duration: 0.3
-        }, "-=0.2")
+        }, "-=0.2");
 
-        // HOME Section Animations
-        .from('#home #hello', {
-            opacity: 0,
-            duration: 0.5
-        })
+    return tl; // return timeline
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Home Section Animation
+function animateHome() {
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+    tl.from('#home #hello', {
+        opacity: 0,
+        duration: 0.5
+    })
         .from('#home .vector_1', {
             x: -30,
             opacity: 0,
@@ -101,6 +108,8 @@ function animateNavbarAndHome() {
             duration: 0.4,
             ease: 'power4.out'
         }, "-=0.3");
+
+    return tl; // return timeline
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -857,7 +866,7 @@ function initTypingAnimation() {
             smartBackspace: true,
             html: false
         });
-    }, 1500);
+    }, 100);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1025,31 +1034,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CSSRulePlugin);
 
-        setupHamburgerMenu();
-        animateNavbarAndHome();
-        handleMouseMoveAndSVG();
-        animateLinesBackground();
-        marqueAnimation();
-        initSmoothNavScroll();
+        // setupHamburgerMenu();
+        // // animateNavbar();
+        // // animateHome();
+        // handleMouseMoveAndSVG();
+        // // animateLinesBackground();
+        // marqueAnimation();
+        // initSmoothNavScroll();
         initCustomCursor();
-        initCardHoverEffect();
-        initBoardHoverEffect();
-        initializeVanillaTilt(".card, .board");
-        initTypingAnimation();
-        // createRubberBandEffect(".rubber-band");
-        initCardMouseEffects();
+        // initCardHoverEffect();
+        // initBoardHoverEffect();
+        // initializeVanillaTilt(".card, .board");
+        // initTypingAnimation();
+        // // createRubberBandEffect(".rubber-band");
+        // initCardMouseEffects();
 
-        // Check if touch device or ScrollTrigger unsupported
-        if (isTouchDevice() || typeof ScrollTrigger === 'undefined') {
-            initTouchFallbackAnimations();
-        } else {
-            // initAboutSectionAnimation();
-            initSkillsSectionAnimation();
-            initOthersSectionAnimation();
-            initProjectsSectionAnimation();
-            initContactSectionAnimation();
-            animateSectionsOnScroll();
-        }
+        // // Check if touch device or ScrollTrigger unsupported
+        // if (isTouchDevice() || typeof ScrollTrigger === 'undefined') {
+        //     initTouchFallbackAnimations();
+        // } else {
+        //     // initAboutSectionAnimation();
+        //     initSkillsSectionAnimation();
+        //     initOthersSectionAnimation();
+        //     initProjectsSectionAnimation();
+        //     initContactSectionAnimation();
+        //     animateSectionsOnScroll();
+        // }
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
         // Fallback to touch animations if GSAP/ScrollTrigger unavailable
