@@ -1034,18 +1034,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CSSRulePlugin);
 
-        // setupHamburgerMenu();
-        // // animateNavbar();
-        // // animateHome();
-        // handleMouseMoveAndSVG();
+        setupHamburgerMenu();
+        animateNavbar();
+        animateHome();
+        handleMouseMoveAndSVG();
         // // animateLinesBackground();
-        // marqueAnimation();
-        // initSmoothNavScroll();
+        marqueAnimation();
+        initSmoothNavScroll();
         initCustomCursor();
-        // initCardHoverEffect();
+        initCardHoverEffect();
         // initBoardHoverEffect();
-        // initializeVanillaTilt(".card, .board");
-        // initTypingAnimation();
+        initializeVanillaTilt(".card, .board");
+        initTypingAnimation();
         // // createRubberBandEffect(".rubber-band");
         // initCardMouseEffects();
 
