@@ -1035,8 +1035,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CSSRulePlugin);
 
         setupHamburgerMenu();
-        animateNavbar();
-        animateHome();
+        // animateNavbar();
+        // animateHome();
         handleMouseMoveAndSVG();
         // // animateLinesBackground();
         marqueAnimation();
