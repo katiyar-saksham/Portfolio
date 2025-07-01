@@ -1014,82 +1014,96 @@ function initTouchFallbackAnimations() {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Cleanup Animations
-function cleanupAnimations() {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    gsap.killTweensOf("*");
-}
-
-// Call on page unload or component unmount
-window.addEventListener('beforeunload', cleanupAnimations);
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Contact Form Handling
-const contactForm = document.getElementById('contact-form');
-const submitBtn = document.getElementById('submit-btn');
-
-// Email validation function
-function isValidEmail(email) {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
-}
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const emailInput = document.getElementById('email');
-    const email = emailInput.value.trim();
-    
-    // Validate email
-    if (!isValidEmail(email)) {
-        alert('Please enter a valid email address');
-        emailInput.focus();
-        return;
-    }
-    
-    // Disable submit button and show loading state
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    
-    try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            // Show success message
-            alert('Message sent successfully!');
-            contactForm.reset();
-        } else {
-            // Show error message
-            alert('Failed to send message. Please try again.');
+    // Cleanup Animations
+    function cleanupAnimations() {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         }
-    } catch (error) {
-        // Show error message
-        alert('An error occurred. Please try again later.');
-        console.error('Form submission error:', error);
-    } finally {
-        // Re-enable submit button and restore text
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send';
+        if (typeof gsap !== 'undefined') {
+            gsap.killTweensOf("*");
+        }
     }
-});
 
-///////////////////////////////////////////////////////////////////////////////
+    // Call on page unload
+    window.addEventListener('beforeunload', cleanupAnimations);
 
-// DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
+    ///////////////////////////////////////////////////////////////////////////
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Email validation function
+    function isValidEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return emailRegex.test(email);
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submit (since we are handling via JS)
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+
+            // Validate email
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address');
+                emailInput.focus();
+                return;
+            }
+
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+
+                    // ❗ Redirect is not needed when using JS submission
+                    // If you still want to redirect manually, uncomment below:
+                    // window.location.href = "https://web3forms.com/success";
+                } else {
+                    alert('Failed to send message. Please try again.');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send';
+            }
+        });
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    // DOMContentLoaded
+   document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CSSRulePlugin);
+        // Make sure ScrollToPlugin and CSSRulePlugin are also defined before registering
+        if (typeof ScrollToPlugin !== 'undefined' && typeof CSSRulePlugin !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CSSRulePlugin);
+        } else {
+            console.warn('ScrollToPlugin or CSSRulePlugin not found');
+            gsap.registerPlugin(ScrollTrigger); // register at least ScrollTrigger
+        }
 
+        // Initialize your UI features - make sure all these functions are defined
         setupHamburgerMenu();
-        // animateNavbar();
-        // animateHome();
+        animateNavbar();
+        animateHome();
         handleMouseMoveAndSVG();
         // animateLinesBackground();
         marqueAnimation();
@@ -1102,20 +1116,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // createRubberBandEffect(".rubber-band");
         initCardMouseEffects();
 
-        // Check if touch device or ScrollTrigger unsupported
+        // For touch devices or if ScrollTrigger unsupported
         if (isTouchDevice() || typeof ScrollTrigger === 'undefined') {
             initTouchFallbackAnimations();
         } else {
             // initAboutSectionAnimation();
-            // initSkillsSectionAnimation();
-            // initOthersSectionAnimation();
+            initSkillsSectionAnimation();
+            initOthersSectionAnimation();
             // initProjectsSectionAnimation();
-            // initContactSectionAnimation();
+            initContactSectionAnimation();
             animateSectionsOnScroll();
         }
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
-        // Fallback to touch animations if GSAP/ScrollTrigger unavailable
         initTouchFallbackAnimations();
     }
 });
