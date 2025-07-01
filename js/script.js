@@ -1031,53 +1031,43 @@ function initTouchFallbackAnimations() {
 
     // Contact Form Handling
 function handleContactForm() {
-    const contactForm = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
-    const formStatus = document.getElementById('form-status');
+    const statusDiv = document.getElementById('form-status');
 
-    if (!contactForm) return;
+    if (!form) return;
 
-    contactForm.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Disable button & show feedback
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
-        if (formStatus) formStatus.textContent = '';
+        statusDiv.textContent = '';
 
-        const formData = new FormData(contactForm);
+        const formData = new FormData(form);
 
         try {
-            const response = await fetch(contactForm.action, {
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: formData
             });
 
-            // Check if JSON is returned
-            const contentType = response.headers.get('content-type');
-            let result = null;
+            const result = await response.json();
 
-            if (contentType && contentType.includes('application/json')) {
-                result = await response.json();
-            }
-
-            if (response.ok && (!result || result.success)) {
-                if (formStatus) {
-                    formStatus.style.color = 'green';
-                    formStatus.textContent = '✅ Message sent successfully!';
-                }
-                contactForm.reset();
+            if (response.ok && result.success) {
+                statusDiv.style.color = 'green';
+                statusDiv.textContent = '✅ Message sent successfully!';
+                form.reset();
             } else {
-                if (formStatus) {
-                    formStatus.style.color = 'red';
-                    formStatus.textContent = '❌ Failed to send message. Please try again.';
-                }
+                statusDiv.style.color = 'red';
+                statusDiv.textContent = `❌ ${result.message || 'Failed to send message.'}`;
             }
-        } catch (error) {
-            if (formStatus) {
-                formStatus.style.color = 'red';
-                formStatus.textContent = '⚠️ An error occurred. Please try again later.';
-            }
-            console.error('Form submission error:', error);
+
+        } catch (err) {
+            console.error('Submission error:', err);
+            statusDiv.style.color = 'red';
+            statusDiv.textContent = '⚠️ An unexpected error occurred.';
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send';
@@ -1085,8 +1075,7 @@ function handleContactForm() {
     });
 }
 
-
-    ///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -1126,14 +1115,14 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSectionsOnScroll();
         }
 
-        // ✅ Contact form UX handler (Web3Forms)
-        // handleContactForm();
+        // ✅ JS-based Web3Forms Contact Form Handler
+        handleContactFormJS();
 
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
         initTouchFallbackAnimations();
 
-        // ✅ Ensure form handler still runs if GSAP fails
-        // handleContactForm();
+        // ✅ Ensure contact form handler runs even if GSAP fails
+        handleContactFormJS();
     }
 });
