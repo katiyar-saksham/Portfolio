@@ -1030,67 +1030,53 @@ function initTouchFallbackAnimations() {
     ///////////////////////////////////////////////////////////////////////////
 
     // Contact Form Handling
+function handleContactForm() {
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
 
-    // Email validation function
-    function isValidEmail(email) {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return emailRegex.test(email);
-    }
+    if (!contactForm) return;
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Prevent default form submit (since we are handling via JS)
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent default browser submission
 
-            const emailInput = document.getElementById('email');
-            const email = emailInput.value.trim();
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.textContent = '';
 
-            // Validate email
-            if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
-                emailInput.focus();
-                return;
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                formStatus.style.color = 'green';
+                formStatus.textContent = '✅ Message sent successfully!';
+                contactForm.reset();
+            } else {
+                formStatus.style.color = 'red';
+                formStatus.textContent = '❌ Failed to send message. Please try again.';
             }
-
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            try {
-                const formData = new FormData(contactForm);
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    alert('Message sent successfully!');
-                    contactForm.reset();
-
-                    // ❗ Redirect is not needed when using JS submission
-                    // If you still want to redirect manually, uncomment below:
-                    // window.location.href = "https://web3forms.com/success";
-                } else {
-                    alert('Failed to send message. Please try again.');
-                }
-            } catch (error) {
-                alert('An error occurred. Please try again later.');
-                console.error('Form submission error:', error);
-            } finally {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send';
-            }
-        });
-    }
+        } catch (error) {
+            formStatus.style.color = 'red';
+            formStatus.textContent = '⚠️ An error occurred. Please try again later.';
+            console.error('Form submission error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send';
+        }
+    });
+}
 
     ///////////////////////////////////////////////////////////////////////////
-
-    // DOMContentLoaded
-   document.addEventListener('DOMContentLoaded', () => {
+// DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         // Make sure ScrollToPlugin and CSSRulePlugin are also defined before registering
         if (typeof ScrollToPlugin !== 'undefined' && typeof CSSRulePlugin !== 'undefined') {
@@ -1127,8 +1113,15 @@ function initTouchFallbackAnimations() {
             initContactSectionAnimation();
             animateSectionsOnScroll();
         }
+
+        // ✅ Contact form UX handler (Web3Forms)
+        handleContactForm();
+
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
         initTouchFallbackAnimations();
+
+        // ✅ Ensure form handler still runs if GSAP fails
+        handleContactForm();
     }
 });
