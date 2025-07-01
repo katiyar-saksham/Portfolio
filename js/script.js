@@ -1127,13 +1127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // ✅ Contact form UX handler (Web3Forms)
-        handleContactForm();
+        // handleContactForm();
 
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
         initTouchFallbackAnimations();
 
         // ✅ Ensure form handler still runs if GSAP fails
-        handleContactForm();
+        // handleContactForm();
     }
 });
