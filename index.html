@@ -539,23 +539,27 @@
             <h1 id="contact-heading">Contact Me</h1>
             <div class="contact-flex">
                 <div class="contact-col col1">
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                   <form id="contact-form">
+
                         <input type="hidden" name="access_key" value="b21c8853-0a1e-42a5-83b4-7274e286d814">
                         <input type="hidden" name="subject" value="New Contact Form Submission">
-                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        <input type="text" name="botcheck" style="display:none;">
 
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" name="name" id="name" required>
 
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" name="email" id="email" required>
 
                         <label for="message">Message:</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea name="message" id="message" required></textarea>
 
                         <button type="submit" id="submit-btn">Send</button>
                     </form>
-                    <div id="form-status" style="margin-top: 10px;"></div>
+
+                    <!-- Feedback Area -->
+                    <div id="form-status"></div>
+
                 </div>
                 <div class="contact-col col2">
                     <div class="cardContact">
