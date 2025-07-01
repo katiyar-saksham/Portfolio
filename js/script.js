@@ -1038,12 +1038,11 @@ function handleContactForm() {
     if (!contactForm) return;
 
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Prevent default browser submission
+        e.preventDefault();
 
-        // Disable button and show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
-        formStatus.textContent = '';
+        if (formStatus) formStatus.textContent = '';
 
         const formData = new FormData(contactForm);
 
@@ -1053,19 +1052,31 @@ function handleContactForm() {
                 body: formData
             });
 
-            const result = await response.json();
+            // Check if JSON is returned
+            const contentType = response.headers.get('content-type');
+            let result = null;
 
-            if (response.ok && result.success) {
-                formStatus.style.color = 'green';
-                formStatus.textContent = '✅ Message sent successfully!';
+            if (contentType && contentType.includes('application/json')) {
+                result = await response.json();
+            }
+
+            if (response.ok && (!result || result.success)) {
+                if (formStatus) {
+                    formStatus.style.color = 'green';
+                    formStatus.textContent = '✅ Message sent successfully!';
+                }
                 contactForm.reset();
             } else {
-                formStatus.style.color = 'red';
-                formStatus.textContent = '❌ Failed to send message. Please try again.';
+                if (formStatus) {
+                    formStatus.style.color = 'red';
+                    formStatus.textContent = '❌ Failed to send message. Please try again.';
+                }
             }
         } catch (error) {
-            formStatus.style.color = 'red';
-            formStatus.textContent = '⚠️ An error occurred. Please try again later.';
+            if (formStatus) {
+                formStatus.style.color = 'red';
+                formStatus.textContent = '⚠️ An error occurred. Please try again later.';
+            }
             console.error('Form submission error:', error);
         } finally {
             submitBtn.disabled = false;
@@ -1073,6 +1084,7 @@ function handleContactForm() {
         }
     });
 }
+
 
     ///////////////////////////////////////////////////////////////////////////
 // DOMContentLoaded
