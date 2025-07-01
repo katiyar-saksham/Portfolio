@@ -859,12 +859,12 @@ function initTypingAnimation() {
             typeSpeed: 50,
             backSpeed: 30,
             backDelay: 600,
-            startDelay: 500,
+            startDelay: 300,
             loop: true,
             smartBackspace: true,
             html: false
         });
-    }, 100);
+    }, 1200);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
