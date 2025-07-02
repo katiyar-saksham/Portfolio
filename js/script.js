@@ -1,3 +1,25 @@
+// Debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+// Detect Touch Device
+function isTouchDevice() {
+    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+}
+
+///////////////////////////////////////////////////////////////////////////
+
 // Hamburger Menu
 function setupHamburgerMenu() {
     const hamburger = document.querySelector('#hamburger');
@@ -35,7 +57,72 @@ function setupHamburgerMenu() {
     });
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+// Smooth Nav Scroll
+function initSmoothNavScroll() {
+    const navLinks = document.querySelector('#nav-links');
+    const hamburger = document.querySelector('#hamburger');
+
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (!targetElement) {
+                console.error(`Target element ${targetId} not found`);
+                return;
+            }
+
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                    y: targetElement,
+                    offsetY: 100
+                },
+                ease: 'power2.out',
+                onComplete: () => console.log(`Scrolled to ${targetId}`)
+            });
+
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = hamburger?.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('ri-close-large-fill');
+                    icon.classList.add('ri-menu-4-line');
+                }
+            }
+        });
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+// Custom Cursor
+function initCustomCursor() {
+    const cursor = document.querySelector('.custom-cursor');
+    const interactiveElements = document.querySelectorAll('a, button, .hamburger');
+
+    if (!cursor) return;
+
+    // Hide cursor on touch devices to reduce processing overhead
+    if (isTouchDevice()) {
+        cursor.style.display = 'none';
+        return;
+    }
+
+    // Move cursor with mouse (non-touch devices only)
+    document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, {
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            duration: 0.1,
+            ease: 'power2.out'
+        });
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
 
 // Navbar Animation
 function animateNavbar() {
@@ -61,8 +148,7 @@ function animateNavbar() {
     return tl; // return timeline
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Home Section Animation
 function animateHome() {
@@ -110,7 +196,7 @@ function animateHome() {
     return tl; // return timeline
 }
 
-//////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Lines Background Animation
 function animateLinesBackground() {
@@ -126,7 +212,84 @@ function animateLinesBackground() {
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+// String SVG Animation
+function handleMouseMoveAndSVG() {
+    const stringContainer = document.querySelector("#string");
+    const svgPath = document.querySelector("svg path");
+
+    if (!svgPath || !stringContainer) return;
+
+    // Initial and final path states (using percentage-based coordinates)
+    const initialPath = `M 0 50 Q 50 50 100 50`;
+    let finalPath = initialPath;
+
+    // Function to convert mouse coordinates to SVG viewBox coordinates
+    function convertCoordinates(x, y) {
+        const containerRect = stringContainer.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
+
+        // Convert to viewBox coordinates (0-100 range)
+        const svgX = (x - containerRect.left) / containerWidth * 100;
+        const svgY = (y - containerRect.top) / containerHeight * 100;
+
+        return { x: svgX, y: svgY };
+    }
+
+    // Mouse move event listener
+    stringContainer.addEventListener("mousemove", function (dets) {
+        const coords = convertCoordinates(dets.clientX, dets.clientY);
+        const newPath = `M 0 50 Q ${coords.x} ${coords.y} 100 50`;
+
+        gsap.to(svgPath, {
+            attr: { d: newPath },
+            duration: 0.3,
+            ease: "power3.out"
+        });
+    });
+
+    // Mouse leave event listener
+    stringContainer.addEventListener("mouseleave", function () {
+        gsap.to(svgPath, {
+            attr: { d: finalPath },
+            duration: 1.5,
+            ease: "elastic.out(1, 0.2)"
+        });
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+// Marque Animation
+function marqueAnimation() {
+    window.addEventListener("wheel", function (e) {
+        if (e.deltaY > 0) {
+            gsap.to(".marque", {
+                transform: "translateX(-200%)",
+                duration: 2,
+                repeat: -1,
+                ease: "none"
+            })
+            gsap.to(".marque i", {
+                rotate: 180
+            })
+        } else {
+            gsap.to(".marque", {
+                transform: "translateX(0%)",
+                duration: 2,
+                repeat: -1,
+                ease: "none"
+            })
+            gsap.to(".marque i", {
+                rotate: 0
+            })
+        }
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
 
 // About Section Animation
 function initAboutSectionAnimation() {
@@ -194,84 +357,7 @@ function initAboutSectionAnimation() {
     }, "-=0.25");
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Marque Animation
-function marqueAnimation() {
-    window.addEventListener("wheel", function (e) {
-        if (e.deltaY > 0) {
-            gsap.to(".marque", {
-                transform: "translateX(-200%)",
-                duration: 2,
-                repeat: -1,
-                ease: "none"
-            })
-            gsap.to(".marque i", {
-                rotate: 180
-            })
-        } else {
-            gsap.to(".marque", {
-                transform: "translateX(0%)",
-                duration: 2,
-                repeat: -1,
-                ease: "none"
-            })
-            gsap.to(".marque i", {
-                rotate: 0
-            })
-        }
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// String SVG Animation
-function handleMouseMoveAndSVG() {
-    const stringContainer = document.querySelector("#string");
-    const svgPath = document.querySelector("svg path");
-
-    if (!svgPath || !stringContainer) return;
-
-    // Initial and final path states (using percentage-based coordinates)
-    const initialPath = `M 0 50 Q 50 50 100 50`;
-    let finalPath = initialPath;
-
-    // Function to convert mouse coordinates to SVG viewBox coordinates
-    function convertCoordinates(x, y) {
-        const containerRect = stringContainer.getBoundingClientRect();
-        const containerWidth = containerRect.width;
-        const containerHeight = containerRect.height;
-
-        // Convert to viewBox coordinates (0-100 range)
-        const svgX = (x - containerRect.left) / containerWidth * 100;
-        const svgY = (y - containerRect.top) / containerHeight * 100;
-
-        return { x: svgX, y: svgY };
-    }
-
-    // Mouse move event listener
-    stringContainer.addEventListener("mousemove", function (dets) {
-        const coords = convertCoordinates(dets.clientX, dets.clientY);
-        const newPath = `M 0 50 Q ${coords.x} ${coords.y} 100 50`;
-
-        gsap.to(svgPath, {
-            attr: { d: newPath },
-            duration: 0.3,
-            ease: "power3.out"
-        });
-    });
-
-    // Mouse leave event listener
-    stringContainer.addEventListener("mouseleave", function () {
-        gsap.to(svgPath, {
-            attr: { d: finalPath },
-            duration: 1.5,
-            ease: "elastic.out(1, 0.2)"
-        });
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Skills Section Animation
 function initSkillsSectionAnimation(useScrollTrigger = true) {
@@ -327,7 +413,7 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
         cardTl.from(card.querySelector('.card-info-title h4'), {
             y: 25,
             opacity: 0,
-            duration: 0.5,
+        duration: 0.5,
             ease: 'power2.out'
         }, "-=0.25");
 
@@ -351,7 +437,7 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
     return skillsTl;
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Others Section Animation
 function initOthersSectionAnimation(useScrollTrigger = true) {
@@ -407,7 +493,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
     return othersTl;
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Projects Section Animation
 function initProjectsSectionAnimation(useScrollTrigger = true) {
@@ -515,7 +601,7 @@ function initProjectsSectionAnimation(useScrollTrigger = true) {
     return projectsTl;
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Contact Section Animation
 function initContactSectionAnimation(useScrollTrigger = true) {
@@ -548,71 +634,7 @@ function initContactSectionAnimation(useScrollTrigger = true) {
     return contactTl;
 }
 
-// // Contact Section Animation
-// function initContactSectionAnimation(useScrollTrigger = true) {
-//     const contactTl = gsap.timeline(useScrollTrigger ? {
-//         scrollTrigger: {
-//             trigger: "#contact",
-//             start: "top 80%",
-//             end: "center 60%",
-//             scrub: 0.6,
-//             toggleActions: "play none none reverse"
-//         }
-//     } : {});
-
-//     // Animate heading
-//     contactTl.from('#contact-heading', {
-//         y: 60,
-//         opacity: 0,
-//         duration: 0.7,
-//         ease: 'power3.out'
-//     });
-
-//     // Animate form elements (inputs and button)
-//     contactTl.from('.contact-col.col1', {
-//         y: 50,
-//         opacity: 0,
-//         duration: 0.8,
-//         ease: 'power2.out'
-//     }, "-=0.4")
-//         .from('.contact-col.col1 input, .contact-col.col1 textarea, .contact-col.col1 button', {
-//             y: 30,
-//             opacity: 0,
-//             duration: 0.6,
-//             stagger: 0.2,
-//             ease: 'power2.out'
-//         }, "-=0.6");
-
-//     // Animate contact card
-//     contactTl.from('.contact-col.col2 .cardContact', {
-//         scale: 0.85,
-//         opacity: 0,
-//         duration: 1.2,
-//         ease: 'elastic.out(1, 0.8)'
-//     }, "-=0.5");
-
-//     // Animate social media links
-//     contactTl.from('.contact-col.col2 .box', {
-//         x: 40,
-//         opacity: 0,
-//         duration: 0.5,
-//         stagger: 0.2,
-//         ease: 'power3.out'
-//     }, "-=0.8");
-
-//     // Animate decorative triangle
-//     contactTl.from('.triangle-contact-1', {
-//         scale: 0,
-//         rotation: 90,
-//         opacity: 0,
-//         duration: 0.5,
-//         ease: 'back.out(2)'
-//     }, "-=0.4");
-
-//     return contactTl;
-// }
-
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // ALL Sections Animation
 function animateSectionsOnScroll() {
@@ -633,72 +655,7 @@ function animateSectionsOnScroll() {
     });
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Smooth Nav Scroll
-function initSmoothNavScroll() {
-    const navLinks = document.querySelector('#nav-links');
-    const hamburger = document.querySelector('#hamburger');
-
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (!targetElement) {
-                console.error(`Target element ${targetId} not found`);
-                return;
-            }
-
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                    y: targetElement,
-                    offsetY: 100
-                },
-                ease: 'power2.out',
-                onComplete: () => console.log(`Scrolled to ${targetId}`)
-            });
-
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const icon = hamburger?.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('ri-close-large-fill');
-                    icon.classList.add('ri-menu-4-line');
-                }
-            }
-        });
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Custom Cursor
-function initCustomCursor() {
-    const cursor = document.querySelector('.custom-cursor');
-    const interactiveElements = document.querySelectorAll('a, button, .hamburger');
-
-    if (!cursor) return;
-
-    // Hide cursor on touch devices to reduce processing overhead
-    if (isTouchDevice()) {
-        cursor.style.display = 'none';
-        return;
-    }
-
-    // Move cursor with mouse (non-touch devices only)
-    document.addEventListener('mousemove', (e) => {
-        gsap.to(cursor, {
-            x: e.clientX - 5,
-            y: e.clientY - 5,
-            duration: 0.1,
-            ease: 'power2.out'
-        });
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Card Hover skills section
 function initCardHoverEffect() {
@@ -720,7 +677,7 @@ function initCardHoverEffect() {
     });
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // Card Hover OTHERS section
 function initBoardHoverEffect() {
@@ -741,83 +698,7 @@ function initBoardHoverEffect() {
     });
 }
 
-/////////////////////////////////////////////////////////////////////////////////
-
-// Vanilla Tilt
-function initializeVanillaTilt(selector) {
-    VanillaTilt.init(document.querySelectorAll(selector), {
-        reverse: true,
-        transition: true,
-        max: 10,
-        glare: true,
-        "max-glare": 1,
-        speed: 1000,
-        scale: 1.05,
-        easing: "cubic-bezier(.03,.98,.52,.99)",
-    });
-}
-
-/////////////////////////////////////////////////////////////////////////////////
-
-// Typing Animation
-function initTypingAnimation() {
-    const typedTarget = document.querySelector('#typed-text');
-    if (!typedTarget) return;
-
-    setTimeout(() => {
-        new Typed('#typed-text', {
-            strings: [
-                '&lt;Front-End Developer/&gt;',
-                '&lt;Perfectionist/&gt;',
-                '&lt;Code. Design. Disrupt./&gt;',
-                '&lt;Creative Photographer/&gt;',
-                '&lt;Cinematography Lover/&gt;',
-                '&lt;Visionary Builder/&gt;'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 600,
-            startDelay: 300,
-            loop: true,
-            smartBackspace: true,
-            html: false
-        });
-    }, 1200);
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Rubber Band Text Animation
-function createRubberBandEffect(selector) {
-    const elements = document.querySelectorAll(selector);
-
-    elements.forEach(element => {
-        const text = element.textContent;
-        const letters = text.split("");
-
-        // Create spans for each letter, preserve spaces
-        const html = letters.map(letter =>
-            letter === " " ? " " : `<span>${letter}</span>`
-        ).join("");
-
-        element.innerHTML = html;
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Debounce function
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
+///////////////////////////////////////////////////////////////////////////
 
 // Card Mouse Effects for Projects Section
 function initCardMouseEffects() {
@@ -846,14 +727,118 @@ function initCardMouseEffects() {
     });
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-// Detect Touch Device
-function isTouchDevice() {
-    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+// Vanilla Tilt
+function initializeVanillaTilt(selector) {
+    VanillaTilt.init(document.querySelectorAll(selector), {
+        reverse: true,
+        transition: true,
+        max: 10,
+        glare: true,
+        "max-glare": 1,
+        speed: 1000,
+        scale: 1.05,
+        easing: "cubic-bezier(.03,.98,.52,.99)",
+    });
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+// Typing Animation
+function initTypingAnimation() {
+    const typedTarget = document.querySelector('#typed-text');
+    if (!typedTarget) return;
+
+    setTimeout(() => {
+        new Typed('#typed-text', {
+             strings: [
+                '&lt;Front-End Developer/&gt;',
+                '&lt;Perfectionist/&gt;',
+                '&lt;Code. Design. Disrupt./&gt;',
+                '&lt;Creative Photographer/&gt;',
+                '&lt;Cinematography Lover/&gt;',
+                '&lt;Visionary Builder/&gt;'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 600,
+            startDelay: 300,
+            loop: true,
+            smartBackspace: true,
+            html: false
+        });
+    }, 1200);
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+// Rubber Band Text Animation
+function createRubberBandEffect(selector) {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(element => {
+        const text = element.textContent;
+        const letters = text.split("");
+
+        // Create spans for each letter, preserve spaces
+        const html = letters.map(letter =>
+            letter === " " ? " " : `<span>${letter}</span>`
+        ).join("");
+
+        element.innerHTML = html;
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+// Contact Form Handling
+function handleContactForm() {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusDiv = document.getElementById('form-status');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Disable button & show feedback
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusDiv.textContent = '';
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                statusDiv.style.color = 'green';
+                statusDiv.textContent = '✅ Message sent successfully!';
+                form.reset();
+            } else {
+                statusDiv.style.color = 'red';
+                statusDiv.textContent = `❌ ${result.message || 'Failed to send message.'}`;
+            }
+
+        } catch (err) {
+            console.error('Submission error:', err);
+            statusDiv.style.color = 'red';
+            statusDiv.textContent = '⚠️ An unexpected error occurred.';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send';
+        }
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////
 
 // Fallback Animations for Touch Devices or Unsupported ScrollTrigger
 function initTouchFallbackAnimations() {
@@ -930,70 +915,25 @@ function initTouchFallbackAnimations() {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-    // Cleanup Animations
-    function cleanupAnimations() {
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        }
-        if (typeof gsap !== 'undefined') {
-            gsap.killTweensOf("*");
-        }
+// Cleanup Animations
+function cleanupAnimations() {
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
-
-    // Call on page unload
-    window.addEventListener('beforeunload', cleanupAnimations);
-
-    ///////////////////////////////////////////////////////////////////////////
-
-    // Contact Form Handling
-function handleContactForm() {
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const statusDiv = document.getElementById('form-status');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Disable button & show feedback
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        statusDiv.textContent = '';
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                statusDiv.style.color = 'green';
-                statusDiv.textContent = '✅ Message sent successfully!';
-                form.reset();
-            } else {
-                statusDiv.style.color = 'red';
-                statusDiv.textContent = `❌ ${result.message || 'Failed to send message.'}`;
-            }
-
-        } catch (err) {
-            console.error('Submission error:', err);
-            statusDiv.style.color = 'red';
-            statusDiv.textContent = '⚠️ An unexpected error occurred.';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send';
-        }
-    });
+    if (typeof gsap !== 'undefined') {
+        gsap.killTweensOf("*");
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Call on page unload
+window.addEventListener('beforeunload', cleanupAnimations);
+
+///////////////////////////////////////////////////////////////////////////
+
 // DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -1034,13 +974,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // ✅ JS-based Web3Forms Contact Form Handler
-        handleContactFormJS();
+        handleContactForm();
 
     } else {
         console.error('GSAP or ScrollTrigger not loaded');
         initTouchFallbackAnimations();
 
         // ✅ Ensure contact form handler runs even if GSAP fails
-        handleContactFormJS();
+        handleContactForm();
     }
 });
