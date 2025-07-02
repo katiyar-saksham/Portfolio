@@ -298,7 +298,7 @@ function initAboutSectionAnimation() {
         scrollTrigger: {
             trigger: "#about",
             start: "top 90%", // Start when top of section hits 90% of viewport
-            end: "center 30%", // End when center hits 30% of viewport
+            end: "center 50%", // End when center hits 30% of viewport
             scrub: 0.6, // Smooth scroll-linked animation
             toggleActions: "play none none reverse" // Play on enter, reverse on leave
         }
@@ -445,8 +445,8 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
     const othersTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#others",
-            start: "top 80%",
-            end: "center 30%",
+            start: "top 85%",
+            end: "top 73%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -465,7 +465,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
         const boardTl = gsap.timeline(useScrollTrigger ? {
             scrollTrigger: {
                 trigger: board,
-                start: "top 85%",
+                start: "top 80%",
                 end: "top 60%",
                 scrub: 0.6,
                 toggleActions: "play none none reverse"
@@ -502,7 +502,7 @@ function initProjectsSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#projects",
             start: "top 80%",
-            end: "center 40%",
+            end: "top 73%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -608,7 +608,7 @@ function initContactSectionAnimation(useScrollTrigger = true) {
     const contactTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#contact",
-            start: "top 95%",
+            start: "top 85%",
             end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
@@ -768,7 +768,7 @@ function initTypingAnimation() {
             smartBackspace: true,
             html: false
         });
-    }, 1200);
+    }, 1400);
 }
 
 ///////////////////////////////////////////////////////////////////////////
