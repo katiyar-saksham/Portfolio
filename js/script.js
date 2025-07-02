@@ -134,7 +134,7 @@ function initAboutSectionAnimation() {
     const aboutTl = gsap.timeline({
         scrollTrigger: {
             trigger: "#about",
-            start: "top 90%", // Start when top of section hits 80% of viewport
+            start: "top 90%", // Start when top of section hits 90% of viewport
             end: "center 30%", // End when center hits 30% of viewport
             scrub: 0.6, // Smooth scroll-linked animation
             toggleActions: "play none none reverse" // Play on enter, reverse on leave
@@ -148,27 +148,20 @@ function initAboutSectionAnimation() {
         duration: 0.4,
         ease: 'power3.out'
     })
-        // Animate blur rectangle scaling up
-        .from('.blurRectangle', {
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.4,
-            ease: 'power3.out'
-        }, "-=0.2")
-        // Animate intro card with elastic effect
-        .from('.about_intro-card', {
-            scale: 0.85,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'elastic.out(1, 0.8)'
-        }, "-=0.2");
+    // Animate intro card with elastic effect
+    .from('.about_intro-card', {
+        scale: 0.85,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'elastic.out(1, 0.8)'
+    }, "-=0.2");
 
     // Timeline for about card elements
     const cardTl = gsap.timeline({
         scrollTrigger: {
             trigger: ".about_intro-card",
-            start: "top 80%", // Start when card top hits 75% of viewport
-            end: "top 45%", // End when card top hits 25% of viewport
+            start: "top 80%", // Start when card top hits 80% of viewport
+            end: "top 45%", // End when card top hits 45% of viewport
             scrub: 0.8, // Slightly slower scrub for detail
             toggleActions: "play none none reverse"
         }
@@ -181,83 +174,24 @@ function initAboutSectionAnimation() {
         duration: 0.6,
         ease: 'power3.out'
     })
-        // Animate card title sliding up
-        .from('.about_card-info-title h3', {
-            y: 30,
-            opacity: 0,
-            duration: 0.5
-        }, "-=0.3")
-        // Animate card subtitle sliding up
-        .from('.about_card-info-title h4', {
-            y: 25,
-            opacity: 0,
-            duration: 0.5
-        }, "-=0.25")
-        // Animate description sliding up
-        .from('#typed-desc', {
-            y: 20,
-            opacity: 0,
-            duration: 0.8
-        }, "-=0.25");
-
-    // Animate ::before pseudo-element (assumes defined in CSS)
-    if (CSSRulePlugin) {
-        const containerBefore = CSSRulePlugin.getRule("#about .container::before");
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 85%",
-                end: "center 25%",
-                scrub: 0.7,
-                toggleActions: "play none none reverse"
-            }
-        })
-            .fromTo(containerBefore, {
-                cssRule: { opacity: 0, scale: 0.7, rotation: 0 }
-            }, {
-                cssRule: { opacity: 1, scale: 1.2, rotation: 45 },
-                duration: 1.2,
-                ease: 'power4.out'
-            });
-
-        // Animate ::after pseudo-element (assumes defined in CSS)
-        const containerAfter = CSSRulePlugin.getRule("#about .container::after");
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 50%",
-                end: "center 5%",
-                scrub: 0.6,
-                toggleActions: "play none none reverse"
-            }
-        })
-            .fromTo(containerAfter, {
-                cssRule: { opacity: 0, scale: 0.9, rotation: 0 }
-            }, {
-                cssRule: { opacity: 0.9, scale: 1.3, rotation: 45 },
-                duration: 1.2,
-                ease: 'power4.out'
-            });
-
-        // Animate triangle elements
-        const triangles = ['.triangle-1', '.triangle-2', '.triangle-3'];
-        triangles.forEach((triangle, index) => {
-            gsap.from(triangle, {
-                scrollTrigger: {
-                    trigger: "#about",
-                    start: `top ${55 - (index * 6)}%`, // Staggered start
-                    end: `center ${35 - (index * 6)}%`, // Staggered end
-                    scrub: true,
-                    toggleActions: "play none none reverse"
-                },
-                scale: 0,
-                rotation: 90,
-                opacity: 0,
-                duration: 0.5,
-                ease: 'back.out(2)'
-            });
-        });
-    }
+    // Animate card title sliding up
+    .from('.about_card-info-title h3', {
+        y: 30,
+        opacity: 0,
+        duration: 0.5
+    }, "-=0.3")
+    // Animate card subtitle sliding up
+    .from('.about_card-info-title h4', {
+        y: 25,
+        opacity: 0,
+        duration: 0.5
+    }, "-=0.25")
+    // Animate description sliding up
+    .from('#typed-desc', {
+        y: 20,
+        opacity: 0,
+        duration: 0.8
+    }, "-=0.25");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -367,7 +301,7 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
             scrollTrigger: {
                 trigger: card,
                 start: "top 90%",
-                end: "top 80%",
+                end: "top 70%",
                 scrub: 0.6,
                 toggleActions: "play none none reverse"
             }
@@ -426,7 +360,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#others",
             start: "top 80%",
-            end: "center 60%",
+            end: "center 55%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -446,7 +380,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
             scrollTrigger: {
                 trigger: board,
                 start: "top 85%",
-                end: "top 65%",
+                end: "top 60%",
                 scrub: 0.6,
                 toggleActions: "play none none reverse"
             }
@@ -516,7 +450,7 @@ function initProjectsSectionAnimation(useScrollTrigger = true) {
             scrollTrigger: {
                 trigger: card,
                 start: "top 90%",
-                end: "top 60%",
+                end: "top 55%",
                 scrub: 0.6,
                 toggleActions: "play none none reverse"
             }
@@ -588,8 +522,8 @@ function initContactSectionAnimation(useScrollTrigger = true) {
     const contactTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#contact",
-            start: "top 80%",
-            end: "center 60%",
+            start: "top 85%",
+            end: "top 55%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
