@@ -366,7 +366,7 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#skills",
             start: "top 80%",
-            end: "center 60%",
+             end: "center 30%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -446,7 +446,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#others",
             start: "top 80%",
-            end: "center 65%",
+            end: "center 30%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
