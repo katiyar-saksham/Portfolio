@@ -522,8 +522,8 @@ function initContactSectionAnimation(useScrollTrigger = true) {
     const contactTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#contact",
-            start: "top 85%",
-            end: "top 55%",
+            start: "top 95%",
+            end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -694,22 +694,6 @@ function initCustomCursor() {
             y: e.clientY - 5,
             duration: 0.1,
             ease: 'power2.out'
-        });
-    });
-
-    // Hide cursor when mouse leaves window
-    document.addEventListener('mouseleave', () => {
-        gsap.to(cursor, {
-            opacity: 0,
-            duration: 0.3
-        });
-    });
-
-    // Show cursor when mouse enters window
-    document.addEventListener('mouseenter', () => {
-        gsap.to(cursor, {
-            opacity: 1,
-            duration: 0.3
         });
     });
 }
