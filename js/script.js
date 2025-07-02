@@ -446,7 +446,7 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#others",
             start: "top 80%",
-            end: "center 55%",
+            end: "center 65%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
