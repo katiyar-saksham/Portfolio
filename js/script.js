@@ -365,8 +365,8 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
     const skillsTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#skills",
-            start: "top 80%",
-             end: "center 30%",
+            start: "top 90%",
+             end: "center 60%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -445,13 +445,13 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
     const othersTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#others",
-            start: "top 85%",
-            end: "top 73%",
+            start: "top 95%",
+            end: "center 60%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
     } : {});
-
+    
     // Animate heading
     othersTl.from('#others h1', {
         y: 60,
@@ -502,7 +502,7 @@ function initProjectsSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#projects",
             start: "top 80%",
-            end: "top 73%",
+            end: "top 65%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -609,7 +609,7 @@ function initContactSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#contact",
             start: "top 85%",
-            end: "top 70%",
+            end: "center 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
