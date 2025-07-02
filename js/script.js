@@ -366,7 +366,7 @@ function initSkillsSectionAnimation(useScrollTrigger = true) {
         scrollTrigger: {
             trigger: "#skills",
             start: "top 90%",
-             end: "center 60%",
+             end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -445,8 +445,8 @@ function initOthersSectionAnimation(useScrollTrigger = true) {
     const othersTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#others",
-            start: "top 95%",
-            end: "center 60%",
+            start: "top 90%",
+             end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -501,8 +501,8 @@ function initProjectsSectionAnimation(useScrollTrigger = true) {
     const projectsTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#projects",
-            start: "top 80%",
-            end: "top 65%",
+           start: "top 90%",
+             end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -608,8 +608,8 @@ function initContactSectionAnimation(useScrollTrigger = true) {
     const contactTl = gsap.timeline(useScrollTrigger ? {
         scrollTrigger: {
             trigger: "#contact",
-            start: "top 85%",
-            end: "center 70%",
+            start: "top 90%",
+             end: "top 70%",
             scrub: 0.6,
             toggleActions: "play none none reverse"
         }
@@ -646,7 +646,7 @@ function animateSectionsOnScroll() {
             scrollTrigger: {
                 trigger: section,
                 start: 'top 100%',
-                end: 'top 70%',
+                end: 'top 75%',
                 scrub: 0.6,
                 // markers: true,
                 toggleActions: 'play none none reverse'
