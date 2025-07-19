@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saksham Katiyar | Frontend Developer Portfolio</title>
+    <meta name="description" content="Saksham Katiyar - Frontend Developer, UI/UX Designer, and Hackathon Enthusiast.">
+    <meta name="theme-color" content="#181818">
+    <meta property="og:title" content="Saksham Katiyar | Frontend Developer Portfolio">
+    <meta property="og:description"
+        content="Saksham Katiyar - Frontend Developer, UI/UX Designer, and Hackathon Enthusiast.">
+    <meta property="og:image" content="/assets/images/my_pic-removebg.webp">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sakshamkatiyar.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Saksham Katiyar | Frontend Developer Portfolio">
+    <meta name="twitter:description"
+        content="Saksham Katiyar - Frontend Developer, UI/UX Designer, and Hackathon Enthusiast.">
+    <meta name="twitter:image" content="/assets/images/my_pic-removebg.webp">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <!-- remix icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;700&family=Poetsen+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preload" href="./css/style.css" as="style">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;700&family=Poetsen+One&display=swap"
+        as="style">
+</head>
+
+<body>
+    <a href="#home" class="skip-link" tabindex="0"></a>
+    <div id="base">
+        <div class="custom-cursor" aria-hidden="true"></div>
+
+        <!-- ---------------------NAVBAR--------------------- -->
+        <header>
+            <nav aria-label="Main navigation">
+                <div class="logo">SaKsham</div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+                <div id="btnElement">
+                    <a class="download" aria-label="Download Resume"
+                        href="https://drive.google.com/uc?export=download&id=1SYZtuEOxXWBpeSbXB_SAwG7Bm07u2d04"
+                        target="_blank">
+                        <i class="ri-download-2-line" aria-hidden="true"></i> <span>Resume</span>
+                    </a>
+                    <!-- <img class="ele ele_1" src="/assets/images/Vector 1 orange.webp" alt="vector">
+                    <img class="ele ele_2" src="/assets/images/Vector 2.webp" alt="vector"> -->
+                </div>
+                <div class="hamburger" id="hamburger" aria-label="Open navigation menu" tabindex="0" role="button">
+                    <i class="ri-menu-4-line" aria-hidden="true"></i>
+                </div>
+            </nav>
+            <!-- <div class="triangleNav triangle-4"></div> -->
+            <!-- <div class="triangleNav triangle-5"></div> -->
+        </header>
+
+        <!-- ---------------------HERO--------------------- -->
+        <main class="main" role="main">
+            <img id="lines" src="/assets/images/lines.webp" alt="Decorative background lines" aria-hidden="true"
+                loading="lazy">
+
+            <section id="home" aria-label="Home section">
+                <div id="hello">
+                    <!-- <img class="vector vector_1" src="/assets/images/Vector 1.webp" alt="vector"> -->
+                    <button class="hi">HELLO</button>
+                    <!-- <img class="vector vector_2" src="/assets/images/Vector 2.webp" alt="vector"> -->
+                </div>
+                <div class="text">
+                    <h1>I'm <span>SAKSHAM,</span></h1>
+                    <p id="typed-text">&lt;/&gt;</p>
+                </div>
+                <img class="my_pic" src="/assets/images/my_pic-removebg.webp" alt="Saksham Katiyar profile picture"
+                    loading="lazy">
+
+                <!-- <div class="lgo">
+                    <div class="triangle logo-image"></div>
+                    <div class="zigZag logo-image"></div>
+                    <div class="plus logo-image"></div>
+                    <div class="circle logo-image"></div>
+                </div> -->
+
+                <div id="string" aria-hidden="true">
+                    <svg height="200" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 0 50 Q 50 50 100 50" stroke="whitesmoke" stroke-width="1" fill="transparent"></path>
+                    </svg>
+                </div>
+            </section>
+        </main>
+
+        <!-- ---------------------ABOUT--------------------- -->
+        <section id="about" aria-label="About section">
+            <h1>About Me</h1>
+            <div class="container">
+                <div class="blurRectangle" aria-hidden="true"></div>
+                <div id="about-card-wrapper">
+                    <div class="about_intro-card">
+                        <div class="about_card-image">
+                            <img src="/assets/images/about_pic.webp" alt="Saksham Katiyar about section photo"
+                                loading="lazy">
+                        </div>
+                        <div class="about_card-info-title">
+
+                            <h3>Who is <span>Saksham Katiyar ?</span></h3>
+                            <h4>Thinker • Developer • Learner for Life</h4>
+                            <p class="about_card-desc">
+                                <span id="typed-desc">I'm Saksham Katiyar, a second-year B.Tech student specializing in
+                                    CSE (AI). Passionate about coding, I specialize in front-end development, blending
+                                    logic and creativity to craft meaningful digital experiences. Whether shipping solo
+                                    projects or collaborating in high-energy hackathons, I thrive on turning bold ideas
+                                    into real-world impact.
+                                    I don't just code to build — I code to make a difference. Always learning. Always
+                                    evolving. I'm eager to connect with fellow enthusiasts in hackathons or tech
+                                    innovation.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div> -->
+        </section>
+
+        <!-- ---------------------MARQUEE--------------------- -->
+
+        <div id="move" aria-label="Skills Marquee" tabindex="0">
+            <div class="marque">
+                <img src="/assets/images/marquee icons/html.webp" alt="HTML icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/css.webp" alt="CSS icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/Js.webp" alt="JavaScript icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/figma.webp" alt="Figma icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/git.webp" alt="Git icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/gitHub.webp" alt="GitHub icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/CPP.webp" alt="C++ icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/React.webp" alt="React icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/pr_pro.webp" alt="Premiere Pro icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+            <div class="marque">
+                <img src="/assets/images/marquee icons/ps.webp" alt="Photoshop icon" loading="lazy">
+                <i class="ri-arrow-right-fill" aria-hidden="true"></i>
+            </div>
+
+        </div>
+
+        <!-- ---------------------PROJECTS--------------------- -->
+        <section id="projects">
+            <h1>My Projects</h1>
+
+            <div id="cards" class="glow-hover">
+                <div class="blurRectangle">
+                    <img src="/assets/images/Rectangle.png" alt="bgBlur">
+                </div>
+
+                <!-- 1. ProjectPulse -->
+                <div class="card projectpulse" data-tags="Ongoing,AI,Collab,Firebase">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="ri-pulse-line"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="ri-pulse-line"></i>
+                                <div class="card-info-title">
+                                    <h3>ProjectPulse</h3>
+                                    <h4>AI Based Project Task Splitter (Ongoing)</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="ri-pulse-line"></i>
+                            <h4>Team Projects Simplified</h4>
+                        </div>
+                        <p>
+                            AI-powered group project task manager for students – auto assigns tasks, tracks team
+                            progress, and exports final reports. Features real-time Kanban board, skill-based workload
+                            splitter, and project dashboard.
+                        </p>
+                        <ul>
+                            <li>✅ AI Task Assignment + Timeline</li>
+                            <li>📊 Dashboard with Chart.js visualizations</li>
+                            <li><strong>Stack:</strong> HTML, JS, Firebase</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Firebase Kanban Board -->
+                <div class="card kanban" data-tags="Realtime,Firebase,Dashboard,Team">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="ri-trello-fill"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="ri-trello-fill"></i>
+                                <div class="card-info-title">
+                                    <h3>Realtime Kanban Board</h3>
+                                    <h4>Live Task Management & Team Collaboration</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="ri-trello-fill"></i>
+                            <h4>Realtime Collaboration</h4>
+                        </div>
+                        <p>
+                            Built for handling weekly tasks , this Firebase-integrated Kanban board enables real-time
+                            updates, progress tracking, and drag-drop UI for managing work efficiently.
+                        </p>
+                        <ul>
+                            <li>🧠 State sync with Firestore</li>
+                            <li>🔃 Drag-Drop, Realtime UI</li>
+                            <li><strong>Stack:</strong> HTML, JS, Firebase Firestore</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Care Sathi -->
+                <div class="card caresathi" data-tags="AI,Healthcare,Full-Stack">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="ri-hospital-fill"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="ri-hospital-fill"></i>
+                                <div class="card-info-title">
+                                    <h3>Care Sathi</h3>
+                                    <h4>AI Health Companion</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="ri-hospital-fill"></i>
+                            <h4>Smarter Health Help</h4>
+                        </div>
+                        <p>
+                            Combines AI with healthcare to predict diseases, give first-aid tips, and locate nearby
+                            hospitals. Also features medical QR codes for emergency info sharing.
+                        </p>
+                        <ul>
+                            <li>📍 SOS & hospital locator</li>
+                            <li>🤖 AI Chatbot for symptom analysis</li>
+                            <li><strong>Stack:</strong> HTML, JS, Dialogflow, Firebase</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. NutriMap -->
+                <div class="card nutrimap" data-tags="Chatbot,AI,Health,Nutrition">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="ri-robot-2-fill"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="ri-robot-2-fill"></i>
+                                <div class="card-info-title">
+                                    <h3>NutriMap</h3>
+                                    <h4>AI Nutrition Chatbot</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="ri-robot-2-fill"></i>
+                            <h4>Personal Diet Buddy</h4>
+                        </div>
+                        <p>
+                            A lightweight AI chatbot that helps users choose healthier meals, log nutrition data, and
+                            track personal health goals based on diet inputs.
+                        </p>
+                        <ul>
+                            <li>🥗 Daily intake tips</li>
+                            <li>💬 Interactive chatbot</li>
+                            <li><strong>Stack:</strong> HTML, CSS, JS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Sidcup Golf Clone -->
+                <div class="card golf" data-tags="Frontend,Animation,Clone">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="fa-solid fa-golf-ball"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="fa-solid fa-golf-ball"></i>
+                                <div class="card-info-title">
+                                    <h3>Sidcup Golf Clone</h3>
+                                    <h4>Frontend Animation Showcase</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="fa-solid fa-golf-ball"></i>
+                            <h4>Modern UI/UX</h4>
+                        </div>
+                        <p>
+                            A visually engaging clone website built to practice GSAP animations, scroll effects, and
+                            dynamic interactivity. Fully responsive and UI-accurate.
+                        </p>
+                        <ul>
+                            <li>🎯 Scroll-triggered animations</li>
+                            <li>🖱️ Custom cursor + loaders</li>
+                            <li><strong>Stack:</strong> HTML, CSS, JS, GSAP</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Influenzio -->
+                <div class="card influenzio" data-tags="Marketing,Reward System,Full-Stack">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i class="fa-solid fa-rocket"></i>
+                                <div class="card-info-title">
+                                    <h3>Influenzio</h3>
+                                    <h4>Influencer Rewards Platform</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i class="fa-solid fa-rocket"></i>
+                            <h4>Growth through Influence</h4>
+                        </div>
+                        <p>
+                            Connects brands and creators through smart campaign matching and gamified “Influenzio Coin”
+                            rewards for engagement. Helps creators monetize and grow.
+                        </p>
+                        <ul>
+                            <li>💰 Custom reward logic</li>
+                            <li>📣 Brand-campaign dashboard</li>
+                            <li><strong>Stack:</strong> HTML, JS, Firebase</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shapes -->
+            <div class="circleTech circleTech-1"></div>
+            <div class="triangle triangle-14"></div>
+        </section>
+
+
+        <!-- ---------------------SKILLS--------------------- -->
+
+        <section id="skills" aria-label="Skills section">
+            <h1>Developer Toolkit</h1>
+            <p id="subtitle2" class="section-subtitle">
+                Hackathon Finalist (2/6)
+            </p>
+
+            <div id="cards" class="glow-hover">
+                <div class="blurRectangle" aria-hidden="true"></div>
+
+                <!-- Frontend Animation Focus -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-solid iTag fa-code"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-solid iTag fa-code"></i>
+                                <div class="card-info-title">
+                                    <h3>Modern Frontend & Animations</h3>
+                                    <h4>HTML, CSS, JS, GSAP, Locomotive</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-solid iTag fa-code"></i>
+                            <h4>Visual Experience Engineering</h4>
+                        </div>
+                        <p>
+                            I specialize in crafting stunning web interfaces using HTML, CSS, and JavaScript, enriched
+                            with modern animation libraries like GSAP and Locomotive Scroll. From fluid transitions to
+                            scroll-based effects — I build web experiences that move, engage, and impress.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Programming Languages -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-solid iTag fa-laptop-code"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-solid iTag fa-laptop-code"></i>
+                                <div class="card-info-title">
+                                    <h3>Programming Foundations</h3>
+                                    <h4>C++, Java, JavaScript, Python</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-solid iTag fa-laptop-code"></i>
+                            <h4>Problem Solving + Logic Building</h4>
+                        </div>
+                        <p>
+                            My coding journey is rooted in problem solving with Java, while also exploring the
+                            versatility of JavaScript and Python. From DSA to mini tools, I continuously refine logic,
+                            syntax, and structure to write efficient, bug-resistant code.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-solid iTag fa-palette"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-solid iTag fa-palette"></i>
+                                <div class="card-info-title">
+                                    <h3>Design with Intention</h3>
+                                    <h4>Figma, Photoshop & clean visuals</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-solid iTag fa-palette"></i>
+                            <h4>UI/UX & Design</h4>
+                        </div>
+                        <p>
+                            Beyond code, I breathe design. With Figma, Photoshop, and Premiere Pro, I translate ideas
+                            into compelling visuals. From branding to layouts and motion, every design reflects clarity,
+                            function, and emotion.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Git & Workflow -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-brands iTag fa-git-alt"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-brands iTag fa-git-alt"></i>
+                                <div class="card-info-title">
+                                    <h3>Git & Team Collaboration</h3>
+                                    <h4>GitHub, PRs, Branching, Team Projects</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-brands iTag fa-git-alt"></i>
+                            <h4>Version Control & Sync</h4>
+                        </div>
+                        <p>
+                            I work seamlessly in collaborative GitHub environments — managing pull requests, resolving
+                            merge conflicts, and using branches effectively. Whether solo or in a team, I keep codebases
+                            clean and contributions well-documented.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-solid iTag fa-diagram-project"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-solid iTag fa-diagram-project"></i>
+                                <div class="card-info-title">
+                                    <h3>Real-World Project Experience</h3>
+                                    <h4>Care Sathi, Influenzio, NutriMap</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-solid iTag fa-diagram-project"></i>
+                            <h4>From Hackathons to Hands-on</h4>
+                        </div>
+                        <p>
+                            Every project is a story. From solving real healthcare challenges with Care Sathi to
+                            gamifying influencer marketing in Influenzio — I bring ideas to life using smart tech, clean
+                            design, and scalable logic. Projects like NutriMap and Kanban dashboards reflect my knack
+                            for merging tech with utility.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Lifelong Learner -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i aria-hidden="true" class="fa-solid iTag fa-brain"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <i aria-hidden="true" class="fa-solid iTag fa-brain"></i>
+                                <div class="card-info-title">
+                                    <h3>The Curious Engineer</h3>
+                                    <h4>Connecting Dots, Tinkering Across Tech</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content inner">
+                        <div class="heading">
+                            <i aria-hidden="true" class="fa-solid iTag fa-brain"></i>
+                            <h4>Lifelong Learning & Beyond</h4>
+                        </div>
+                        <p>
+                            From AI chatbots to Firebase dashboards, I love experimenting with new technologies and
+                            frameworks. My curiosity pushes me beyond tutorials — into building real tools, learning
+                            from bugs, and connecting disciplines through code.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- <div class="circleTech circleTech-2"></div>
+        <div class="zigzaag zigzaag-3"></div> -->
+
+
+        <!-- ---------------------OTHERS--------------------- -->
+
+        <section id="others">
+            <h1>Life Outside the Laptop</h1>
+            <div id="boards" class="glow-hover">
+                <div class="blurRectangle">
+                    <img src="/assets/images/Rectangle.png" alt="bgBlur">
+                </div>
+
+                <!-- Photography -->
+                <div class="board camera">
+                    <div class="board-content">
+                        <div class="board-image">
+                            <i class="ri-camera-ai-fill cameraa"></i>
+                        </div>
+                        <div class="board-info-wrapper">
+                            <div class="board-info">
+                                <i class="ri-camera-ai-fill cameraa"></i>
+                                <div class="board-info-title">
+                                    <h3>Visual Storytelling Through Lens</h3>
+                                    <h4>Portraits, Nature & Frame Composition</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-content inner">
+                        <div class="headings">
+                            <i class="ri-camera-ai-fill cameraa"></i>
+                            <h4>Finding Stories in Still Frames</h4>
+                        </div>
+                        <p>
+                            Photography, for me, is more than a hobby — it’s how I observe the world. From candid street
+                            shots to textured nature scenes, I love capturing emotion, symmetry, and raw moments. It’s
+                            my creative escape that teaches patience, detail, and depth.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Videography -->
+                <div class="board videography">
+                    <div class="board-content">
+                        <div class="board-image">
+                            <i class="ri-video-on-ai-fill videoo"></i>
+                        </div>
+                        <div class="board-info-wrapper">
+                            <div class="board-info">
+                                <i class="ri-video-on-ai-fill videoo"></i>
+                                <div class="board-info-title">
+                                    <h3>Crafting Cinematic Motion</h3>
+                                    <h4>Framing, Light Play & Narrative Flow</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-content inner">
+                        <div class="headings">
+                            <i class="ri-video-on-ai-fill videoo"></i>
+                            <h4>Motion Meets Meaning</h4>
+                        </div>
+                        <p>
+                            I’m drawn to motion as a medium of emotion. Through basic cinematic techniques — light,
+                            pacing, mood, and transitions — I’ve told small stories on reels, edited short films, and
+                            explored how moving visuals can move people.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- YouTube & Freelance -->
+                <div class="board youtube">
+                    <div class="board-content">
+                        <div class="board-image">
+                            <i aria-hidden="true" class="ri-youtube-fill yt"></i>
+                        </div>
+                        <div class="board-info-wrapper">
+                            <div class="board-info">
+                                <i aria-hidden="true" class="ri-youtube-fill yt"></i>
+                                <div class="board-info-title">
+                                    <h3>Content Strategy & Growth</h3>
+                                    <h4>SEO Tags, YouTube Hacks & Freelance Design</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-content inner">
+                        <div class="headings">
+                            <i aria-hidden="true" class="ri-youtube-fill yt"></i>
+                            <h4>From Views to Value</h4>
+                        </div>
+                        <p>
+                            Whether it's optimizing SEO, designing thumbnails that pop, or experimenting with titles and
+                            trends — I’ve grown YouTube channels organically. Freelancing taught me client work, quick
+                            turnarounds, and how great content gets seen, not just made.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PW Collaborations -->
+                <div class="board pw">
+                    <div class="board-content">
+                        <div class="board-image">
+                            <img id="pw" src="./assets/images/Elements/pw-logo.e76e9f50.webp" alt="pw logo"
+                                loading="lazy">
+                        </div>
+                        <div class="board-info-wrapper">
+                            <div class="board-info">
+                                <img id="pw" src="./assets/images/Elements/pw-logo.e76e9f50.webp" alt="pw logo"
+                                    loading="lazy">
+                                <div class="board-info-title">
+                                    <h3>Brand Collaborations & Growth</h3>
+                                    <h4>PW Affiliates, Promotions & Impactful Collabs</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-content inner">
+                        <div class="headings">
+                            <img id="pw" src="./assets/images/Elements/pw-logo.e76e9f50.webp" alt="pw logo"
+                                loading="lazy">
+                            <h4>Fueling My Tech Journey</h4>
+                        </div>
+                        <p>
+                            I’ve collaborated with Physics Wallah on content and affiliate campaigns that taught me the
+                            true power of influence. From rewards to revenue, this journey helped me reinvest in my
+                            tools — upgrading gear and gaining the confidence to treat content as career capital.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="CTA">
+                    <!-- <a href="">View Samples</a> -->
+                </div>
+            </div>
+
+            <div class="triangle triangle-11"></div>
+            <div class="triangle triangle-12"></div>
+            <div class="triangle triangle-13"></div>
+        </section>
+
+
+        <!-- ---------------------CONTACT--------------------- -->
+
+        <section id="contact" aria-label="Contact section">
+            <h1 id="contact-heading">Contact Me</h1>
+            <div class="contact-flex">
+                <div class="contact-col col1">
+
+                    <form action="https://api.web3forms.com/submit" method="POST" aria-label="Contact form">
+                        <input type="hidden" name="access_key" value="b21c8853-0a1e-42a5-83b4-7274e286d814">
+                        <input type="hidden" name="subject" value="New Contact Form Submission">
+                        <input type="text" name="botcheck" style="display:none;">
+
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" required aria-required="true" aria-label="Your name">
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" required aria-required="true"
+                            aria-label="Your email address">
+
+                        <label for="message">Message:</label>
+                        <textarea name="message" id="message" required aria-required="true"
+                            aria-label="Your message"></textarea>
+
+                        <button type="submit" id="submit-btn" aria-label="Send message">Send</button>
+                    </form>
+
+                    <!-- Feedback Area -->
+                    <div id="form-status" aria-live="polite"></div>
+
+                </div>
+                <div class="contact-col col2">
+                    <div class="cardContact">
+                        <div class="background" aria-hidden="true"></div>
+                        <div class="logoContact">
+                            <div class="logo2Contact">social links</div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/katiyar-saksham/" target="_blank" class="box box1"
+                            aria-label="LinkedIn profile">
+                            <span class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg">
+                                    <path
+                                        d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3H19.6697Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+                        </a>
+                        <a href="https://github.com/katiyar-saksham" target="_blank" class="box box2"
+                            aria-label="GitHub profile">
+                            <span class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg">
+                                    <path
+                                        d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/_katiyar_saksham/" target="_blank" class="box box3"
+                            aria-label="Instagram profile">
+                            <span class="icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path
+                                        d="M12.001 9C10.3436 9 9.00098 10.3431 9.00098 12C9.00098 13.6573 10.3441 15 12.001 15C13.6583 15 15.001 13.6569 15.001 12C15.001 10.3427 13.6579 9 12.001 9ZM12.001 7C14.7614 7 17.001 9.2371 17.001 12C17.001 14.7605 14.7639 17 12.001 17C9.24051 17 7.00098 14.7629 7.00098 12C7.00098 9.23953 9.23808 7 12.001 7ZM18.501 6.74915C18.501 7.43926 17.9402 7.99917 17.251 7.99917C16.5609 7.99917 16.001 7.4384 16.001 6.74915C16.001 6.0599 16.5617 5.5 17.251 5.5C17.9393 5.49913 18.501 6.0599 18.501 6.74915ZM12.001 4C9.5265 4 9.12318 4.00655 7.97227 4.0578C7.18815 4.09461 6.66253 4.20007 6.17416 4.38967C5.74016 4.55799 5.42709 4.75898 5.09352 5.09255C4.75867 5.4274 4.55804 5.73963 4.3904 6.17383C4.20036 6.66332 4.09493 7.18811 4.05878 7.97115C4.00703 9.0752 4.00098 9.46105 4.00098 12C4.00098 14.4745 4.00753 14.8778 4.05877 16.0286C4.0956 16.8124 4.2012 17.3388 4.39034 17.826C4.5591 18.2606 4.7605 18.5744 5.09246 18.9064C5.42863 19.2421 5.74179 19.4434 6.17187 19.6094C6.66619 19.8005 7.19148 19.9061 7.97212 19.9422C9.07618 19.9939 9.46203 20 12.001 20C14.4755 20 14.8788 19.9934 16.0296 19.9422C16.8117 19.9055 17.3385 19.7996 17.827 19.6106C18.2604 19.4423 18.5752 19.2402 18.9074 18.9085C19.2436 18.5718 19.4445 18.2594 19.6107 17.8283C19.8013 17.3358 19.9071 16.8098 19.9432 16.0289C19.9949 14.9248 20.001 14.5389 20.001 12C20.001 9.52552 19.9944 9.12221 19.9432 7.97137C19.9064 7.18906 19.8005 6.66149 19.6113 6.17318C19.4434 5.74038 19.2417 5.42635 18.9084 5.09255C18.573 4.75715 18.2616 4.55693 17.8271 4.38942C17.338 4.19954 16.8124 4.09396 16.0298 4.05781C14.9258 4.00605 14.5399 4 12.001 4ZM12.001 2C14.7176 2 15.0568 2.01 16.1235 2.06C17.1876 2.10917 17.9135 2.2775 18.551 2.525C19.2101 2.77917 19.7668 3.1225 20.3226 3.67833C20.8776 4.23417 21.221 4.7925 21.476 5.45C21.7226 6.08667 21.891 6.81333 21.941 7.8775C21.9885 8.94417 22.001 9.28333 22.001 12C22.001 14.7167 21.991 15.0558 21.941 16.1225C21.8918 17.1867 21.7226 17.9125 21.476 18.55C21.2218 19.2092 20.8776 19.7658 20.3226 20.3217C19.7668 20.8767 19.2076 21.22 18.551 21.475C17.9135 21.7217 17.1876 21.89 16.1235 21.94C15.0568 21.9875 14.7176 22 12.001 22C9.28431 22 8.94514 21.99 7.87848 21.94C6.81431 21.8908 6.08931 21.7217 5.45098 21.475C4.79264 21.2208 4.23514 20.8767 3.67931 20.3217C3.12348 19.7658 2.78098 19.2067 2.52598 18.55C2.27848 17.9125 2.11098 17.1867 2.06098 16.1225C2.01348 15.0558 2.00098 14.7167 2.00098 12C2.00098 9.28333 2.01098 8.94417 2.06098 7.8775C2.11014 6.8125 2.27848 6.0875 2.52598 5.45C2.78014 4.79167 3.12348 4.23417 3.67931 3.67833C4.23514 3.1225 4.79348 2.78 5.45098 2.525C6.08848 2.2775 6.81348 2.11 7.87848 2.06C8.94514 2.0125 9.28431 2 12.001 2Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="triangle-contact triangle-contact-1"></div>
+            <div class="triangle-contact triangle-contact-2"></div> -->
+        </section>
+    </div>
+
+
+
+    <!-- ---------------------SCRIPTS--------------------- -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <!-- Script with defer -->
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>
