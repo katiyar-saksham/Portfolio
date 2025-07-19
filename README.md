@@ -1,4 +1,4 @@
-# Saksham Katiyar - Frontend Developer Portfolio
+# Saksham Katiyar - Portfolio
 
 ## 📱 Live Preview
 
