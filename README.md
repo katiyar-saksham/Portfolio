@@ -1,8 +1,9 @@
 # Saksham Katiyar - Frontend Developer Portfolio
 
-## 🚀 Live Preview
+## 📱 Live Preview
 
-👉 [Portfolio](http://sakshamkatiyar.vercel.app/)
+👉 [sakshamkatiyar.vercel.app](http://sakshamkatiyar.vercel.app/)
+
 
 ---
 
@@ -46,11 +47,15 @@ portfolio/
 
 ## 🔍 Sections
 
-- **Home**: Introduction and welcome section
-- **About**: Information about my background and interests
-- **Projects**: Showcasing my notable work
-- **Skills**: Highlighting my technical proficiencies
-- **Contact**: Ways to get in touch with me
+- **Home** – Personal branding + welcome message  
+- **About** – My journey, goals, and interests  
+- **Projects** – Real-world work with live previews  
+- **Skills** – Technical tools & languages I use  
+- **Experience** – Internships, freelance, or team projects  
+- **Achievements** – Hackathons Finalist  
+- **Resume** – Downloadable resume (PDF)  
+- **Contact** – Let's connect via email or social platforms
+
 
 ## 💻 Installation & Usage
 
@@ -61,10 +66,6 @@ portfolio/
 2. Open `index.html` in your browser
 3. Explore the different sections of the portfolio
 
-## 📱 Live Demo
-
-Visit my portfolio at [sakshamkatiyar.vercel.app](http://sakshamkatiyar.vercel.app/)
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -74,8 +75,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Feel free to reach out if you have any questions or would like to collaborate!
 
 - **Email**: [katiyar.saksham2004@gmail.com](mailto:katiyar.saksham2004@gmail.com)
-- **LinkedIn**: [Saksham Katiyar](https://www.linkedin.com/in/katiyar-saksham/)
-- **GitHub**: [Your GitHub](https://github.com/katiyar-saksham)
+- **LinkedIn**: [http://linkedin.com/in/katiyar-saksham/](https://www.linkedin.com/in/katiyar-saksham/)
+- **GitHub**: [https://github.com/katiyar-saksham](https://github.com/katiyar-saksham)
 
 ---
 
